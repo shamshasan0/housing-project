@@ -18,6 +18,9 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@ngxs/devtools-plugin": "^3.8.2-dev.master-ba73069",
+    "@ngxs/logger-plugin": "^3.8.2-dev.master-ba73069",
+    "@ngxs/store": "^3.8.2-dev.master-ba73069",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
