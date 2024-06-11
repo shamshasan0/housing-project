@@ -3,9 +3,9 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from "./details/details.component";
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    template: `
+  selector: 'app-root',
+  standalone: true,
+  template: `
   <main>
     <a [routerLink]="['/']">
       <header class="brand-name">
@@ -16,10 +16,10 @@ import { DetailsComponent } from "./details/details.component";
 <router-outlet>   </router-outlet>
     </section>
   </main>`,
-    styleUrl: './app.component.scss',
-    imports: [RouterModule, HomeComponent, DetailsComponent]
+  styleUrl: './app.component.scss',
+  imports: [RouterModule, HomeComponent, DetailsComponent]
 })
 export class AppComponent {
-  title='title';
+  title = 'title';
 }
 

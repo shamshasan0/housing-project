@@ -1,9 +1,8 @@
 .results {
   display: grid;
-  column-gap: 14px;
-  row-gap: 14px;
+  gap: 48px;
   grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
-  margin-top: 50px;
+  margin-top: 48px;
   justify-content: space-around;
 }
 input[type="text"] {
@@ -20,6 +19,7 @@ button {
   background: var(--primary-color);
   color: white;
   border-radius: 8px;
+  margin-left: 12px;
 }
 @media (min-width: 500px) and (max-width: 768px) {
   .results {

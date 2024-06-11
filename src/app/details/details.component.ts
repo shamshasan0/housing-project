@@ -10,7 +10,6 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule],
   template: `
     <article>
-      {{housingLocation}}
     <img
       class="listing-photo"
       [src]="housingLocation?.photo"
@@ -52,11 +51,11 @@ export class DetailsComponent {
   constructor() {
     const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
     this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
-    this.housingLocation = housingLocation;
+      this.housingLocation = housingLocation;
     })
   }
 
-    applyForm = new FormGroup({
+  applyForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
