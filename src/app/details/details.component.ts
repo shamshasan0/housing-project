@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { HousingService } from '../actions/housing.services';
+import { HousingService } from '../services/housing.services';
 import { HousingModel } from '../models/housing.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-details',
   standalone: true,

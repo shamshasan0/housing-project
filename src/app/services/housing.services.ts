@@ -15,8 +15,8 @@ export class HousingService {
   }
 
   async getHousingLocationById(id: number): Promise<HousingModel | undefined> {
-    if ( this.houses.length === 0)
-    this.houses = await (this.getAllHousingLocations());
+    if (this.houses.length === 0)
+      this.houses = await (this.getAllHousingLocations());
     return this.houses.find(house => house.id === id);
   }
 

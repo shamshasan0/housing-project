@@ -53,7 +53,7 @@
 // });
 
 import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { HousingService } from '../actions/housing.services';
+import { HousingService } from '../housing.services';
 import { DetailsComponent } from './details.component';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
