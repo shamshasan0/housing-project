@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HousingLocationComponentComponent } from '../housing-location-component/housing-location-component.component';
 import { HousingModel } from '../models/housing.model';
+import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { HousingService } from '../actions/housing.services';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HousingLocationComponentComponent],
+  imports: [CommonModule, HousingLocationComponent],
   template: `
     <section>
       <form>

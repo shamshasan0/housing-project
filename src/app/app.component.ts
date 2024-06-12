@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from "./details/details.component";
+import { HousingLocationState } from './housing-location/housing-location.state';
+import { NgxsModule } from '@ngxs/store';
+
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -5,7 +5,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-housing-location',
   standalone: true,
-  imports: [HousingLocationComponentComponent, CommonModule, RouterLink, RouterOutlet],
+  imports: [HousingLocationComponent, CommonModule, RouterLink, RouterOutlet],
   template: `
   <section class="listing">
     <img
@@ -20,8 +20,10 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
   </section>
   
 `,
-  styleUrl: './housing-location-component.component.scss'
+  styleUrl: './housing-location.component.scss'
 })
-export class HousingLocationComponentComponent {
+export class HousingLocationComponent {
   @Input() housingLocation!: HousingModel;
+
+  
 }
