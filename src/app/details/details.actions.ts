@@ -1,4 +1,8 @@
-export class DetailsAction {
-  static readonly type = '[Details] Add item';
-  constructor(readonly payload: string) { }
+
+export class getHousingLocationById {
+  static readonly type = '[Housing] grab info of a house by its id'
+
+  constructor(public id: number) {
+
+  }
 }

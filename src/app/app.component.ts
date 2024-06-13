@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from "./details/details.component";
-import { HousingLocationState } from './housing-location/housing-location.state';
+import { HomeComponent } from './home/home.component';
+import { GetAllHousingLocations } from './housing-location/housing-location.actions';
+import { NgxsRootModule } from '@ngxs/store/src/modules/ngxs-root.module';
 import { NgxsModule } from '@ngxs/store';
+import { HousingLocationState } from './housing-location/housing-location.state';
+
 
 @Component({
   selector: 'app-root',
@@ -21,8 +24,12 @@ import { NgxsModule } from '@ngxs/store';
   </main>`,
   styleUrl: './app.component.scss',
   imports: [RouterModule, HomeComponent, DetailsComponent]
+  
 })
 export class AppComponent {
+
   title = 'title';
+
+ 
 }
 

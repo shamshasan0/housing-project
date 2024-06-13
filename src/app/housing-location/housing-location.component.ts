@@ -1,7 +1,13 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HousingModel } from '../models/housing.model';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { GetAllHousingLocations } from './housing-location.actions';
+import { Select, Store, select } from '@ngxs/store';
+import { HousingLocationSelectors } from './housing-location.selectors';
+import { Observable } from 'rxjs/internal/Observable';
+import { HousingLocationState } from './housing-location.state';
+
 @Component({
   selector: 'app-housing-location',
   standalone: true,
@@ -25,5 +31,21 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 export class HousingLocationComponent {
   @Input() housingLocation!: HousingModel;
 
+
+  constructor(private store: Store){
+  }
+
+
+
+  ngOnInit(): void {
+    this.GetHouses()
+  }
+
+  
+  @Select(HousingLocationState)
+  houses!: Observable<HousingModel[]>;
+  GetHouses(){
+    this.store.dispatch(new GetAllHousingLocations())
+  }  
   
 }

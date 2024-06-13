@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { State, Action, Selector, StateContext } from '@ngxs/store';
+import { Action, State, StateContext } from '@ngxs/store';
 import { HousingModel } from '../models/housing.model';
-import { AddHousingLocation, GetAllHousingLocations } from './housing-location.actions';
+import { GetAllHousingLocations } from './housing-location.actions';
+
 export interface HousingLocationStateModel {
   houses: HousingModel[];
 }
@@ -9,52 +10,52 @@ export interface HousingLocationStateModel {
 @State<HousingLocationStateModel>({
   name: 'housingLocation',
   defaults: {
-    houses: []
+  houses: []
   }
 })
 
 @Injectable()
 export class HousingLocationState {
-    houses = []
-    url = 'assets/api/house.json'
+
+  url: string = 'assets/api/house.json'
+  houses: HousingModel[] = [];
 
 
-@Action(AddHousingLocation)
-
-  addHouse(ctx:StateContext<HousingLocationStateModel>, addHousingLocation: AddHousingLocation){
-
-    const stateModel = ctx.getState()
-
-    ctx.setState({
-      ...stateModel, 
-      houses:[...stateModel.houses, addHousingLocation]
-    })
-
-  }
-
-
+// get the state, check if houses is null
+// if the houses are null in that state, get houses
+// then update the state with those houses
 @Action(GetAllHousingLocations)
-async getHouses(ctx: StateContext<HousingLocationStateModel>, {  }: GetAllHousingLocations) {
-  const data = await fetch(this.url);
-  this.houses = (await data.json()) ?? [];
+  async getAllHouses(ctx: StateContext<HousingLocationStateModel>, {  }: GetAllHousingLocations) {
+    
+    const state = ctx.getState();
+
+    if (state.houses.length === 0){
+
+    const data = await fetch(this.url);
+    this.houses = (await data.json());
+    
+    return ctx.setState({...state, houses: this.houses})
+    }  
+    }
+    }
+
   
-  const state = ctx.getState();
-  // stateModel.items = [...stateModel.items, payload];
-  ctx.setState(state);
-}
+// @Action(AddHousingLocation)
 
-//   @Selector()
-//    async getAllHouses(state: HousingLocationStateModel) {
-//     const data = await fetch(this.url);
-//     this.houses = (await data.json()) ?? [];
-//     return state.houses;
-//    }
+//  addHouse(ctx:StateContext<HousingLocationStateModel>, addHousingLocation: AddHousingLocation){
 
-  @Selector()
-  static getAllHouses(state: HousingLocationStateModel) {
-    return state.houses;
-  }
+//     // first get all  the housing locations and set that equal to the state
+//     // then we can add on a house to the current state model 
+//     this.houses = this.getAllHouses
+//     const stateModel = ctx.getState()
 
- 
-}
+//     ctx.setState({
+//       ...stateModel, 
+//       houses:[...stateModel.houses, addHousingLocation]
+//     })
+
+//   }
+
+
+
 
