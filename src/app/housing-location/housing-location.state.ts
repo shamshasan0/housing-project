@@ -1,43 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { HousingModel } from '../models/housing.model';
 import { GetAllHousingLocations } from './housing-location.actions';
+import { HousingService } from '../services/housing.services';
 
 export interface HousingLocationStateModel {
   houses: HousingModel[];
 }
 
 @State<HousingLocationStateModel>({
-  name: 'housingLocation',
+  name: 'house',
   defaults: {
-  houses: []
+    houses: []
   }
 })
 
 @Injectable()
 export class HousingLocationState {
 
-  url: string = 'assets/api/house.json'
-  houses: HousingModel[] = [];
+  constructor(private service: HousingService) {}
 
-
+  url: string = '/assets/api/house.json'
+  houses: HousingLocationStateModel[] = [];
+  
 // get the state, check if houses is null
 // if the houses are null in that state, get houses
 // then update the state with those houses
 @Action(GetAllHousingLocations)
-  async getAllHouses(ctx: StateContext<HousingLocationStateModel>, {  }: GetAllHousingLocations) {
+  async getAllHouses(ctx: StateContext<HousingLocationStateModel>) {
     
-    const state = ctx.getState();
+      return this.service.getAllHousingLocations()
 
-    if (state.houses.length === 0){
+    // const data = await fetch(this.url);
+    // this.houses = (await data.json());
+   
+  
+  }
 
-    const data = await fetch(this.url);
-    this.houses = (await data.json());
-    
-    return ctx.setState({...state, houses: this.houses})
-    }  
-    }
-    }
+  
+  
+  
+  @Selector([HousingLocationState])
+  static getHouses(state: HousingLocationStateModel) {
+  return state.houses  }
+  
+  }
 
 
 
