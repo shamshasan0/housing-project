@@ -39,23 +39,6 @@ export class HousingLocationState {
     }
     }
 
-  
-// @Action(AddHousingLocation)
-
-//  addHouse(ctx:StateContext<HousingLocationStateModel>, addHousingLocation: AddHousingLocation){
-
-//     // first get all  the housing locations and set that equal to the state
-//     // then we can add on a house to the current state model 
-//     this.houses = this.getAllHouses
-//     const stateModel = ctx.getState()
-
-//     ctx.setState({
-//       ...stateModel, 
-//       houses:[...stateModel.houses, addHousingLocation]
-//     })
-
-//   }
-
 
 
 
