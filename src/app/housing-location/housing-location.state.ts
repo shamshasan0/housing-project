@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { HousingModel } from '../models/housing.model';
-import { GetAllHousingLocations } from './housing-location.actions';
+import { GetAllHousingLocations, GetHouseLocation } from './housing-location.actions';
 import { HousingService } from '../services/housing.services';
 
 export interface HousingLocationStateModel {
@@ -18,34 +18,28 @@ export interface HousingLocationStateModel {
 @Injectable()
 export class HousingLocationState {
 
-  constructor(private service: HousingService) {}
+  constructor(private service: HousingService) { }
 
-  url: string = '/assets/api/house.json'
-  houses: HousingLocationStateModel[] = [];
-  
-// get the state, check if houses is null
-// if the houses are null in that state, get houses
-// then update the state with those houses
-@Action(GetAllHousingLocations)
+  // get the state, check if houses is null
+  // if the houses are null in that state, get houses
+  // then update the state with those houses
+
+  @Action(GetAllHousingLocations)
   async getAllHouses(ctx: StateContext<HousingLocationStateModel>) {
-    
-      return this.service.getAllHousingLocations()
-
-    // const data = await fetch(this.url);
-    // this.houses = (await data.json());
-   
-  
+    const houseState = ctx.getState();
+    const houses = await this.service.getAllHousingLocations();
+    ctx.setState({
+      ...houseState, houses
+    });
   }
 
-  
-  
-  
+
   @Selector([HousingLocationState])
   static getHouses(state: HousingLocationStateModel) {
-  return state.houses  }
-  
-  }
+    return state;
 
+  }
+}
 
 
 

@@ -12,6 +12,7 @@ import { HousingLocationState } from './housing-location.state';
   imports: [HousingLocationComponent, CommonModule, RouterLink, RouterOutlet],
   template: `
   <section class="listing">
+
     <img
       class="listing-photo"
       [src]="housingLocation.photo"
@@ -28,22 +29,6 @@ import { HousingLocationState } from './housing-location.state';
 })
 export class HousingLocationComponent {
   @Input() housingLocation!: HousingModel;
-
-  constructor(private store: Store){
-
-  }
-
-
-  ngOnInit(): void {
-    this.getHouses()
-  }
-
-    housesOb = this.store.select(HousingLocationState.getHouses)
-
-    getHouses(){
-    this.store.dispatch(new GetAllHousingLocations()).subscribe();
-    
-  }
-  }
+}
 
 

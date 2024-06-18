@@ -23,25 +23,13 @@ export class DetailsState {
 
   @Action(getHousingLocationById)
   getHouse(ctx: StateContext<DetailsStateModel>, action: getHousingLocationById) {
-    
+
     // call getAllHouses to grab houses
     // pass in id then us js function to find the house
-    const {id} = action;
+    const { id } = action;
 
-    if (!id){
-      return 
+    if (!id) {
+      return
     }
-    
-    // const stateModel = GetAllHousingLocations
-
-    // if (this.houses.length === 0)
-    //   this.houses = await (this.getAllHousingLocations());
-    // return this.houses.find(house => house.id === id);
-    
-    // const stateModel = ctx.getState();
-
-    // ctx.setState(stateModel);
-
-    
   }
 }

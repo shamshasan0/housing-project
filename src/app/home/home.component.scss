@@ -1,5 +1,5 @@
 .results {
-  display: grid;
+  display:grid;
   gap: 48px;
   grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
   margin-top: 48px;
@@ -12,6 +12,7 @@ input[type="text"] {
   margin-right: 4px;
   display: inline-block;
   width: 30%;
+
 }
 button {
   padding: 10px;
@@ -20,6 +21,7 @@ button {
   color: white;
   border-radius: 8px;
   margin-left: 12px;
+  
 }
 @media (min-width: 500px) and (max-width: 768px) {
   .results {

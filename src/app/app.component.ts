@@ -24,12 +24,12 @@ import { HousingLocationState } from './housing-location/housing-location.state'
   </main>`,
   styleUrl: './app.component.scss',
   imports: [RouterModule, HomeComponent, DetailsComponent]
-  
+
 })
 export class AppComponent {
 
   title = 'title';
 
- 
+
 }
 
