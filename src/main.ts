@@ -3,11 +3,11 @@ import { bootstrapApplication, provideProtractorTestingSupport } from '@angular/
 import { provideRouter } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app/app.component';
-import { HousingLocationState } from './app/housing-location/housing-location.state';
+import { HousingLocationState } from './app/house/house.state';
 import routeConfig from './routes';
 
-bootstrapApplication(AppComponent,  {
-  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])),provideProtractorTestingSupport(), provideRouter(routeConfig)],
+bootstrapApplication(AppComponent, {
+  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
 }).catch((err: Error) => console.error(err));
 
 

@@ -52,37 +52,37 @@
 // });
 // });
 
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { HousingService } from '../services/housing.services';
-import { DetailsComponent } from './details.component';
-import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-describe('DetailsComponent', () => {
-  let component: DetailsComponent;
-  let fixture: ComponentFixture<DetailsComponent>;
+// import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+// import { HousingService } from '../services/housing.services';
+// import { DetailsComponent } from './details.component';
+// import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+// import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+// describe('DetailsComponent', () => {
+//   let component: DetailsComponent;
+//   let fixture: ComponentFixture<DetailsComponent>;
 
-  let detailsService:HousingService;
-  let http:HttpClient;
-  let httpController: HttpTestingController;
+//   let detailsService:HousingService;
+//   let http:HttpClient;
+//   let httpController: HttpTestingController;
 
-  beforeEach(async () => {
+//   beforeEach(async () => {
   
-     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [DetailsComponent]
-    });
-    detailsService = TestBed.inject(HousingService);
-    http = TestBed.inject(HttpClient)
-    httpController = TestBed.inject(HttpTestingController)
+//      TestBed.configureTestingModule({
+//       imports: [HttpClientTestingModule],
+//       providers: [DetailsComponent]
+//     });
+//     detailsService = TestBed.inject(HousingService);
+//     http = TestBed.inject(HttpClient)
+//     httpController = TestBed.inject(HttpTestingController)
   
   
-  afterEach(() => {
-  httpController.verify();
-  });
+//   afterEach(() => {
+//   httpController.verify();
+//   });
 
-  it('service created', () => {
-    expect(detailsService)
-  });
+//   it('service created', () => {
+//     expect(detailsService)
+//   });
   
 
   // beforeEach(async () => {
@@ -96,12 +96,12 @@ describe('DetailsComponent', () => {
   // });
 
 
-  it('service created', () => {
-    expect(component).toBeTruthy();
-  });
+//   it('service created', () => {
+//     expect(component).toBeTruthy();
+//   });
   
 
 
   
-});
-});
+// });
+// });

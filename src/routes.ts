@@ -1,10 +1,15 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './app/home/home.component';
+import { HouseListComponent } from './app/house-list/house-list.component';
 import { DetailsComponent } from './app/details/details.component';
 const routeConfig: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    redirectTo: 'house-list',
+    pathMatch: 'full'
+  },
+  {
+    path: 'house-list',
+    component: HouseListComponent,
     title: 'Home page',
   },
   {

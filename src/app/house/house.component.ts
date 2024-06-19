@@ -1,15 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { Store } from '@ngxs/store';
 import { HousingModel } from '../models/housing.model';
-import { GetAllHousingLocations } from './housing-location.actions';
-import { HousingLocationState } from './housing-location.state';
 
 @Component({
-  selector: 'app-housing-location',
+  selector: 'app-house',
   standalone: true,
-  imports: [HousingLocationComponent, CommonModule, RouterLink, RouterOutlet],
+  imports: [HouseComponent, CommonModule, RouterLink, RouterOutlet],
   template: `
   <section class="listing">
 
@@ -25,9 +22,9 @@ import { HousingLocationState } from './housing-location.state';
   </section>
   
 `,
-  styleUrl: './housing-location.component.scss'
+  styleUrl: './house.component.scss'
 })
-export class HousingLocationComponent {
+export class HouseComponent {
   @Input() housingLocation!: HousingModel;
 }
 

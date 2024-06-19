@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { HousingModel } from '../models/housing.model';
-import { GetAllHousingLocations, GetHouseLocation } from './housing-location.actions';
 import { HousingService } from '../services/housing.services';
+import { GetAllHousingLocations } from './house.actions';
 
 export interface HousingLocationStateModel {
   houses: HousingModel[];
