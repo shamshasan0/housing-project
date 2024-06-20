@@ -1,18 +1,25 @@
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { HousingLocationComponent } from './housing-location.component';
+// import { HouseComponent } from './house.component';
 // import { provideStore, Store } from '@ngxs/store';
-// import { HousingLocationState } from './housing-location.state';
-// import { GetAllHousingLocations } from './housing-location.actions';
+// import { HousingLocationState } from './house.state';
+// import { GetAllHousingLocations } from './house.actions';
+// import { Observable } from 'rxjs/internal/Observable';
+
+// const SOME_DESIRED_STATE = {
+//     houses: ["chicago blvd"]
+// }
 
 
-// // zoo.state.spec.ts
-// export const SOME_DESIRED_STATE = {
-//   animals: ['Panda']
-// };
-
-// describe('Zoo', () => {
+// describe('HousingLocationState', () => {
 //   let store: Store;
+//   let actions$: Observable<any>;
+
+//   actions$.pipe(ofActionDispatched(LoginSuccess)).subscribe(async (action) => {
+//     await expect(action).toBeTruthy()
+//     done()
+// })
+
 
 //   beforeEach(() => {
 //     TestBed.configureTestingModule({
@@ -22,14 +29,14 @@
 //     store = TestBed.inject(Store);
 //     store.reset({
 //       ...store.snapshot(),
-//       zoo: SOME_DESIRED_STATE
+//       locations: SOME_DESIRED_STATE
 //     });
 //   });
 
-//   it('it toggles feed', () => {
-//     store.dispatch(new GetAllHousingLocations());
+//   it('it gets all houses', () => {
+   
 
-//     const add = store.selectSnapshot(state => state.zoo.add);
-//     expect(add).toBe(true);
-//   });
+//     const getAll = store.selectSnapshot(state => state.locations.getAll);
+//     expect(getAll).toBe(true);
+// })
 // });

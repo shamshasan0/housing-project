@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext, createSelector } from '@ngxs/store';
 import { HousingModel } from '../models/housing.model';
 import { HousingService } from '../services/housing.services';
 import { GetAllHousingLocations } from './house.actions';
+import { HouseComponent } from './house.component';
 
 export interface HousingLocationStateModel {
   houses: HousingModel[];
@@ -39,7 +40,9 @@ export class HousingLocationState {
     return state;
 
   }
-}
+
+  }
+
 
 
 

@@ -6,7 +6,7 @@ import { HousingModel } from '../models/housing.model';
 @Component({
   selector: 'app-house',
   standalone: true,
-  imports: [HouseComponent, CommonModule, RouterLink, RouterOutlet],
+  imports: [HouseComponent, RouterLink, RouterOutlet, CommonModule],
   template: `
   <section class="listing">
 
