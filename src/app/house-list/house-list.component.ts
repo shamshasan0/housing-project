@@ -6,11 +6,12 @@ import { HouseComponent } from '../house/house.component';
 import { HousingLocationState } from '../house/house.state';
 import { SearchBoxPipe } from './SearchBoxPipe';
 import { GetAllHousingLocations } from '../house/house.actions';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-house-list',
   standalone: true,
-  imports: [CommonModule, HouseComponent, SearchBoxPipe, FormsModule],
+  imports: [CommonModule, HouseComponent, SearchBoxPipe, FormsModule, RouterModule],
   template: `
     <section>
       <form>

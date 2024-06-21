@@ -12,7 +12,6 @@ input[type="text"] {
   margin-right: 4px;
   display: inline-block;
   width: 30%;
-
 }
 button {
   padding: 10px;
@@ -21,18 +20,17 @@ button {
   color: white;
   border-radius: 8px;
   margin-left: 12px;
-  
 }
 @media (min-width: 500px) and (max-width: 768px) {
   .results {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   input[type="text"] {
-      width: 70%;
-  }   
+    width: 70%;
+  }
 }
 @media (max-width: 499px) {
   .results {
-      grid-template-columns: 1fr;
-  }    
+    grid-template-columns: 1fr;
+  }
 }

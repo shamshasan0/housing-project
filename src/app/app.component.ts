@@ -19,13 +19,10 @@ import { HouseListComponent } from './house-list/house-list.component';
     </section>
   </main>`,
   styleUrl: './app.component.scss',
-  imports: [RouterModule, HouseListComponent, DetailsComponent]
+  imports: [RouterModule, HouseListComponent, DetailsComponent, AppComponent ]
 
 })
 export class AppComponent {
-
-  title = 'title';
-
 
 }
 

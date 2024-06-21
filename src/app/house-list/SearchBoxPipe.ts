@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { HousingModel } from '../models/housing.model';
+import { HousingLocationState } from '../house/house.state';
 
 @Pipe({
     name: 'searchBox',
@@ -14,8 +15,10 @@ export class SearchBoxPipe implements PipeTransform {
             const city = value.city.toUpperCase();
             const search = searchTxt.toUpperCase();
             return city.indexOf(search) > -1;
-
+            
         };
     };
+
+
 
 }
