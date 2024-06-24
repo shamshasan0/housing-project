@@ -21,11 +21,18 @@ describe('HouseListComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  // TEST 1
+  // STATUS: COMPLETE
   it('should create the house list component', () => {
     expect(component).toBeDefined();
   });
 
-
+  // TEST 2
+  // STATUS: IN PROGRESS
+  it('there should be 10 houses inside the results container', () => {
+    const sectionContainer = fixture.nativeElement.querySelector(".results")
+  })
 
 
 });

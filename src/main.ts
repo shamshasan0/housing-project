@@ -13,13 +13,13 @@ bootstrapApplication(AppComponent, {
   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
 }).catch((err: Error) => console.error(err));
 
-// bootstrapApplication(HouseListComponent, {
-//   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
-// }).catch((err: Error) => console.error(err));
+bootstrapApplication(HouseListComponent, {
+  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
+}).catch((err: Error) => console.error(err));
 
-// bootstrapApplication(HouseComponent, {
-//   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
-// }).catch((err: Error) => console.error(err));
+bootstrapApplication(HouseComponent, {
+  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
+}).catch((err: Error) => console.error(err));
 
 
 

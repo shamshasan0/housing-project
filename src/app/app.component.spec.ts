@@ -1,7 +1,10 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'; // 1
+import { Location } from "@angular/common";
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing'; // 1
 import { Router, RouterModule } from '@angular/router';
+import { NgxsModule } from '@ngxs/store';
 import routeConfig from '../routes';
 import { AppComponent } from './app.component';
+import { HousingLocationState } from './house/house.state';
 
 describe('AppComponent', () => {
 
@@ -10,51 +13,73 @@ describe('AppComponent', () => {
 
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let logoImage: HTMLImageElement;
+  let anchorTag: HTMLAnchorElement;
+  let section: HTMLElement;
+  let router: Router;
+  let location: Location;
 
   beforeEach((() => {
-    TestBed.configureTestingModule({ imports: [AppComponent, RouterModule.forRoot(routeConfig)] }).compileComponents();
+    TestBed.configureTestingModule({ imports: [AppComponent, RouterModule.forRoot(routeConfig), NgxsModule.forRoot([HousingLocationState])] }).compileComponents();
   }));
+
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent)
     component = fixture.componentInstance;
     fixture.detectChanges();
+    router = TestBed.get(Router)
+    location = TestBed.get(Location)
+    router.initialNavigation();
   });
+
+
+
 
   it('should create the app component', () => {
     expect(component).toBeDefined();
-  });
+  })
+
+  // TEST 2
+  // STATUS: COMPLETE
   it('should have an image of company logo within the header', () => {
-    expect(component).toBeDefined();
+    logoImage = fixture.nativeElement.querySelector("header > img")
+    expect(logoImage.src).toMatch("/assets/images/logo.svg"); // even if port changes, this will still be valid
   });
-  it('should have a container ', () => {
-    expect(component).toBeDefined();
+
+  // TEST 3
+  // STATUS: COMPLETE
+  it('anchor and section tag should be siblings', () => {
+    anchorTag = fixture.nativeElement.querySelector("a")
+    section = fixture.nativeElement.querySelector("section")
+    expect(anchorTag.nextSibling).toEqual(section) // if anchorTag is passed in, says section should be passed in    
   });
-  it("anchor tag should redirect to homepage of '/' path'", () => {
-    expect(component).toBeDefined();
-  });
+
+  // TEST 4
+  // STATUS: COMPLETE
   it("default path of app component should match to '/'", () => {
-    expect(component).toBeDefined();
+    anchorTag = fixture.nativeElement.querySelector("a")
+    expect(anchorTag.href).toMatch("/");
   });
 
-  // TEST 2: Test Default App Route Path
+  // TEST 5
+  // STATUS: COMPLETE
+  it("navigate to '' redirects to '/house-list' path'", fakeAsync(() => {
+    router.navigate([""]);
+    tick();
+    expect(location.path()).toBe("/house-list");
+  }));
+
+  // TEST 6
   // STATUS: IN PROGRESS
+  it('there should be a content container inside section', () => {
+    const sectionContainer = fixture.nativeElement.querySelector("section > .content")
+    expect(sectionContainer).toBeDefined();
+  })
 
-  // let router: Router;
+  // TEST 7
+  // STATUS: IN PROGRESS
+  it('section should contain the housing-list router outlet', () => {
+    const sectionContainer = fixture.nativeElement.querySelector(".content")
+  });
 
-  // beforeEach(() => {
-  //   router = TestBed.inject(Router)
-  //   location = TestBed.inject(Location)
-  //   router.initialNavigation()
-  //   fixture = TestBed.createComponent(AppComponent)
-  // });
-
-  // it("should navigate to the default path '/'"), waitForAsync(() => {
-
-  //   fixture.detectChanges();
-  //   fixture.whenStable.then(() => {
-  //     expect(location.href.toBe("/")
-
-  //   });
-
-  // });
 });
