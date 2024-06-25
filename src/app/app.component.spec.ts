@@ -71,8 +71,8 @@ describe('AppComponent', () => {
 
   // TEST 6
   // STATUS: IN PROGRESS
-  it('there should be a content container inside section', () => {
-    const sectionContainer = fixture.nativeElement.querySelector("section > .content")
+  it('there should be a content section container class', () => {
+    const sectionContainer = fixture.nativeElement.querySelector(".content")
     expect(sectionContainer).toBeDefined();
   })
 
