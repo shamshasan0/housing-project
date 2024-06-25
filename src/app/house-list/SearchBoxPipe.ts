@@ -8,12 +8,14 @@ import { HousingModel } from '../models/housing.model';
 export class SearchBoxPipe implements PipeTransform {
 
     transform(houses: Array<HousingModel>, searchTxt: string): Array<HousingModel> {
-        if (!searchTxt) return houses;
+        if (!searchTxt || !houses)
+            return houses;
+
         return houses.filter(getData);
         function getData(value: HousingModel) {
             const city = value.city.toUpperCase();
             const search = searchTxt.toUpperCase();
-            return city.indexOf(search) > -1;
+            return city.includes(search);
 
         };
     };

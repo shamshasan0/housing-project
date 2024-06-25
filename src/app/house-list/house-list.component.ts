@@ -20,7 +20,7 @@ import { RouterModule } from '@angular/router';
     </section>
     <section class="results" *ngIf="housesOb$ | async; let housesState">
       <app-house
-        *ngFor="let housingLocation of housesState.houses | searchBox: filter  "
+        *ngFor="let housingLocation of housesState.houses | searchBox: filter"
         [housingLocation]="housingLocation"
       ></app-house>
     </section>
@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./house-list.component.scss'],
 })
 export class HouseListComponent {
-  // readonly baseUrl = 'https://angular.dev/assets/tutorials/common';
+
   filter = '';
   housesOb$ = this.store.select(HousingLocationState.getHouses)
 

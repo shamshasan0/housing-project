@@ -1,10 +1,11 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { HouseComponent } from './house.component';
-// import { provideStore, Store } from '@ngxs/store';
-// import { HousingLocationState } from './house.state';
-// import { GetAllHousingLocations } from './house.actions';
-// import { Observable } from 'rxjs/internal/Observable';
+// import { TestBed } from '@angular/core/testing';
+// import { Store, provideStore } from '@ngxs/store';
+// import { HousingLocationState } from '../house/house.state';
+// import { HouseListComponent } from '../house-list/house-list.component';
+// import { state } from '@angular/animations';
+// import { GetAllHousingLocations } from '../house/house.actions';
 
+// describe('HouseState', () => {
 
 // let store: Store;
 
@@ -28,39 +29,4 @@
 //     const house = store.selectSnapshot(state => state.house);
 //     expect(house).toBeTruthy();
 //   });
-
-
-// const SOME_DESIRED_STATE = {
-//     houses: ["chicago blvd"]
-// }
-
-
-// describe('HousingLocationState', () => {
-//   let store: Store;
-//   let actions$: Observable<any>;
-
-//   actions$.pipe(ofActionDispatched(LoginSuccess)).subscribe(async (action) => {
-//     await expect(action).toBeTruthy()
-//     done()
-// })
-
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       providers: [provideStore([HousingLocationState])]
-//     });
-
-//     store = TestBed.inject(Store);
-//     store.reset({
-//       ...store.snapshot(),
-//       locations: SOME_DESIRED_STATE
-//     });
-//   });
-
-//   it('it gets all houses', () => {
-   
-
-//     const getAll = store.selectSnapshot(state => state.locations.getAll);
-//     expect(getAll).toBe(true);
-// })
 // });

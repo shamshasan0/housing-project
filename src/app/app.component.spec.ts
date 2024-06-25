@@ -5,6 +5,7 @@ import { NgxsModule } from '@ngxs/store';
 import routeConfig from '../routes';
 import { AppComponent } from './app.component';
 import { HousingLocationState } from './house/house.state';
+import { HouseListComponent } from "./house-list/house-list.component";
 
 describe('AppComponent', () => {
 
@@ -20,7 +21,7 @@ describe('AppComponent', () => {
   let location: Location;
 
   beforeEach((() => {
-    TestBed.configureTestingModule({ imports: [AppComponent, RouterModule.forRoot(routeConfig), NgxsModule.forRoot([HousingLocationState])] }).compileComponents();
+    TestBed.configureTestingModule({ imports: [AppComponent, HouseListComponent, RouterModule.forRoot(routeConfig), NgxsModule.forRoot([HousingLocationState])] }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -32,13 +33,16 @@ describe('AppComponent', () => {
     router.initialNavigation();
   });
 
-
-
-
   it('should create the app component', () => {
     expect(component).toBeDefined();
   })
 
+  it('house list component should exist in app component', () => {
+    fixture = TestBed.createComponent(HouseListComponent)
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component).toBeDefined();
+  })
   // TEST 2
   // STATUS: COMPLETE
   it('should have an image of company logo within the header', () => {
@@ -76,10 +80,5 @@ describe('AppComponent', () => {
     expect(sectionContainer).toBeDefined();
   })
 
-  // TEST 7
-  // STATUS: IN PROGRESS
-  it('section should contain the housing-list router outlet', () => {
-    const sectionContainer = fixture.nativeElement.querySelector(".content")
-  });
 
 });
