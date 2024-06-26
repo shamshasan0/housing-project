@@ -1,29 +1,38 @@
-// import { TestBed } from '@angular/core/testing';
-// import { Store, provideStore } from '@ngxs/store';
-// import { HousingLocationState } from '../house/house.state';
-// import { HouseListComponent } from '../house-list/house-list.component';
-// import { state } from '@angular/animations';
-// import { GetAllHousingLocations } from '../house/house.actions';
-// describe('HouseComponent', () => {
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { provideStore, State } from '@ngxs/store';
+import { HouseComponent } from './house.component';
+import { Router } from '@angular/router';
+import { By } from '@angular/platform-browser';
+import { HousingLocationState } from './house.state';
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       providers: [provideStore([HousingLocationState])]
-//     });
+describe('HouseComponent', () => {
 
-//     store = TestBed.inject(Store);
-//   });
+    let anchorTag: HTMLAnchorElement;
+    let component: HouseComponent;
+    let fixture: ComponentFixture<HouseComponent>;
+    let router: Router;
+    let location: Location;
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [provideStore([HouseComponent])]
+        });
 
-//   it('should get houses', () => {
-//     store
-//       .selectOnce(state => state.house)
-//       .subscribe(house => {
-//         // Note: this expectation will not be run!
-//         expect(house).toBeTruthy();
-//         console.log(house)
-//       });
-  
-//     const house = store.selectSnapshot(state => state.house);
-//     expect(house).toBeTruthy();
-//   });
-// });
+    });
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(HouseComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+        router = TestBed.get(Router)
+        location = TestBed.get(Location)
+        router.initialNavigation();
+    });
+
+    it('on anchor tag click, expect redirect to corresponding details page', fakeAsync(() => {
+        expect(component).toBeDefined();
+    }));
+
+
+    it('', () => {
+    });
+})

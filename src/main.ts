@@ -8,7 +8,6 @@ import routeConfig from './routes';
 import { HouseListComponent } from './app/house-list/house-list.component';
 import { HouseComponent } from './app/house/house.component';
 
-
 bootstrapApplication(AppComponent, {
   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
 }).catch((err: Error) => console.error(err));

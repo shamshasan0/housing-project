@@ -1,9 +1,6 @@
 // import { TestBed } from '@angular/core/testing';
 // import { Store, provideStore } from '@ngxs/store';
 // import { HousingLocationState } from '../house/house.state';
-// import { HouseListComponent } from '../house-list/house-list.component';
-// import { state } from '@angular/animations';
-// import { GetAllHousingLocations } from '../house/house.actions';
 
 // describe('HouseState', () => {
 
