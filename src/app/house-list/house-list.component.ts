@@ -13,11 +13,9 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, HouseComponent, SearchBoxPipe, FormsModule, RouterModule],
   template: `
-    <section>
+
       <form>
         <input type="text" placeholder="Filter by city" [(ngModel)]="filter" name="filter">
-        <button class="primary" type="button" >Search</button> </form>
-    </section>
     <section class="results" *ngIf="housesOb$ | async; let housesState">
       <app-house
         *ngFor="let housingLocation of housesState.houses | searchBox: filter"
