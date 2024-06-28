@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import routeConfig from '../routes';
 import { AppComponent } from './app.component';
-import { HousingLocationState } from './house/house.state';
+import { HousingLocationState } from './house-card/house-card.state';
 import { HouseListComponent } from "./house-list/house-list.component";
 
 describe('AppComponent', () => {

@@ -6,7 +6,7 @@ import { HousingModel } from '../models/housing.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-details',
+  selector: 'app-house-detail',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
@@ -43,9 +43,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     </section>
   </article>
 `,
-  styleUrl: './details.component.scss'
+  styleUrl: './house-detail.component.scss'
 })
-export class DetailsComponent {
+export class HouseDetailComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   housingService = inject(HousingService);
   housingLocation: HousingModel | undefined;

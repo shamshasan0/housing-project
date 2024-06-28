@@ -1,26 +1,26 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Store } from '@ngxs/store';
-import { HouseComponent } from '../house/house.component';
-import { HousingLocationState } from '../house/house.state';
-import { SearchBoxPipe } from './SearchBoxPipe';
-import { GetAllHousingLocations } from '../house/house.actions';
 import { RouterModule } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { GetAllHousingLocations } from '../house-card/house-card.actions';
+import { HouseCardComponent } from '../house-card/house-card.component';
+import { HousingLocationState } from '../house-card/house-card.state';
+import { SearchBoxPipe } from './SearchBoxPipe';
 
 @Component({
   selector: 'app-house-list',
   standalone: true,
-  imports: [CommonModule, HouseComponent, SearchBoxPipe, FormsModule, RouterModule],
+  imports: [CommonModule, HouseCardComponent, SearchBoxPipe, FormsModule, RouterModule],
   template: `
 
       <form>
         <input type="text" placeholder="Filter by city" [(ngModel)]="filter" name="filter">
     <section class="results" *ngIf="housesOb$ | async; let housesState">
-      <app-house
+      <app-house-card
         *ngFor="let housingLocation of housesState.houses | searchBox: filter"
         [housingLocation]="housingLocation"
-      ></app-house>
+      ></app-house-card>
     </section>
   `,
   styleUrls: ['./house-list.component.scss'],

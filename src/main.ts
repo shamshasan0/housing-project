@@ -3,10 +3,10 @@ import { bootstrapApplication, provideProtractorTestingSupport } from '@angular/
 import { provideRouter } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app/app.component';
-import { HousingLocationState } from './app/house/house.state';
+import { HousingLocationState } from './app/house-card/house-card.state';
 import routeConfig from './routes';
 import { HouseListComponent } from './app/house-list/house-list.component';
-import { HouseComponent } from './app/house/house.component';
+import { HouseCardComponent } from './app/house-card/house-card.component';
 
 bootstrapApplication(AppComponent, {
   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
@@ -16,7 +16,7 @@ bootstrapApplication(HouseListComponent, {
   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
 }).catch((err: Error) => console.error(err));
 
-bootstrapApplication(HouseComponent, {
+bootstrapApplication(HouseCardComponent, {
   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
 }).catch((err: Error) => console.error(err));
 

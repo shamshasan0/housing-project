@@ -4,9 +4,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { HousingModel } from '../models/housing.model';
 
 @Component({
-  selector: 'app-house',
+  selector: 'app-house-card',
   standalone: true,
-  imports: [HouseComponent, RouterLink, RouterOutlet, CommonModule],
+  imports: [HouseCardComponent, RouterLink, RouterOutlet, CommonModule],
   template: `
   <section class="listing">
 
@@ -22,9 +22,9 @@ import { HousingModel } from '../models/housing.model';
   </section>
   
 `,
-  styleUrl: './house.component.scss'
+  styleUrl: './house-card.component.scss'
 })
-export class HouseComponent {
+export class HouseCardComponent {
   @Input() housingLocation!: HousingModel;
 }
 

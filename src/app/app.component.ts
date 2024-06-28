@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DetailsComponent } from "./details/details.component";
+import { HouseDetailComponent } from "./house-detail/house-detail.component";
 import { HouseListComponent } from './house-list/house-list.component';
 
 
@@ -19,7 +19,7 @@ import { HouseListComponent } from './house-list/house-list.component';
     </section>
   </main>`,
   styleUrl: './app.component.scss',
-  imports: [RouterModule, HouseListComponent, DetailsComponent, AppComponent ]
+  imports: [RouterModule, HouseListComponent, HouseDetailComponent, AppComponent ]
 
 })
 export class AppComponent {

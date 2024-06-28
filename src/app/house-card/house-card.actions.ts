@@ -5,12 +5,6 @@ export class GetAllHousingLocations {
 
 }
 
-export class GetHouseLocation {
-  static readonly type = '[Housing] get the housing information of a home'
-
-  constructor() { }
-
-}
 
 
 
