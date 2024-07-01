@@ -30,6 +30,7 @@ export class HouseListComponent {
   filter = '';
   housesOb$ = this.store.select(HousingLocationState.getHouses)
 
+  
 
   constructor(private store: Store) {
     this.store.dispatch(new GetAllHousingLocations());

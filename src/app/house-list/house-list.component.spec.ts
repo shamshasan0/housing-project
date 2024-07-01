@@ -29,4 +29,25 @@ describe('HouseListComponent', () => {
   it('should create the house list component', () => {
     expect(component).toBeDefined();
   });
+
+
+//  // Straight Jasmine testing without Angular's testing support
+//  describe('ValueService', () => {
+//   let service: HousingService;
+//   beforeEach(() => {
+//     service = new HousingService();
+//   });
+//   it('#getValue should return real value', () => {
+//      expect(service.getAllHousingLocations()).toBeDefined();
+//   });
+//   it('#getObservableValue should return value from observable', (done: DoneFn) => {
+//     service.getObservableValue().subscribe((value) => {
+//       expect(value).toBe('observable value');
+//       done();
+//     });
+  
+//   });
+ 
+//   });
+
 });

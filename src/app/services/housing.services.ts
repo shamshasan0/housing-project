@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HousingModel } from '../models/housing.model';
-import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
