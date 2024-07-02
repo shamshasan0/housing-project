@@ -1,16 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
+import { HousingModel } from '../models/housing.model';
 import { HousingService } from '../services/housing.services';
 import { HouseDetailComponent } from './house-detail.component';
-import { HousingModel } from '../models/housing.model';
-import { HousingLocationStateModel } from '../house-card/house-card.state';
-import { of } from 'rxjs/internal/observable/of';
 
 describe('HouseDetailComponent', () => {
   let component: HouseDetailComponent;
   let fixture: ComponentFixture<HouseDetailComponent>;
   let mockActivatedRoute;
   let mockHousingService: jasmine.SpyObj<HousingService>;
+  const mockHousingLocation: HousingModel = { "id": 1,
+    "name": "Hopeful Apartment Group",
+    "city": "Oakland",
+    "state": "CA",
+    "photo": "/assets/images/r-architecture-JvQ0Q5IkeMM-unsplash.jpg",
+    "availableUnits": 2,
+    "wifi": true,
+    "laundry": true };
 
   beforeEach(async () => {
     mockActivatedRoute = {
@@ -20,6 +26,9 @@ describe('HouseDetailComponent', () => {
     };
 
     mockHousingService = jasmine.createSpyObj('HousingService', ['getHousingLocationById', 'submitApplication']);
+
+    mockHousingService.getHousingLocationById.and.returnValue(Promise.resolve(mockHousingLocation));
+  
 
     await TestBed.configureTestingModule({
       imports: [ HouseDetailComponent ],
@@ -35,32 +44,18 @@ describe('HouseDetailComponent', () => {
     fixture.detectChanges(); // Trigger initial data binding
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('should fetch housing location on initialization', async () => {
     // Arrange
-    const mockHousingLocation: HousingModel = { "id": 5,
-    "name": "Hopeful Apartment Group",
-    "city": "Oakland",
-    "state": "CA",
-    "photo": "/assets/images/r-architecture-JvQ0Q5IkeMM-unsplash.jpg",
-    "availableUnits": 2,
-    "wifi": true,
-    "laundry": true };
-
-    mockHousingService.getHousingLocationById.and.returnValue(Promise.resolve(mockHousingLocation));
-
+    
     // Act
     fixture.detectChanges(); // Trigger data binding
 
     // Assert
-    fixture.whenStable().then(() => {
-      expect(component.housingLocation).toEqual(mockHousingLocation);
-    });
+    await fixture.whenStable();
 
-  it('should call submitApplication on HousingService with form values', () => {
+    expect(component.housingLocation).toEqual(mockHousingLocation);
+  });
+  it('should invoke submitApplication from housingService with filled out user info', () => {
     // Arrange
     const user = {
       firstName: 'John',
@@ -75,9 +70,31 @@ describe('HouseDetailComponent', () => {
     expect(mockHousingService.submitApplication).toHaveBeenCalledWith(
       user.firstName,
       user.lastName,
-      user.email
+      user.email,
+    );
+  });
+
+  it('should invoke submitApplication from housingService with filled out user info', () => {
+    // Arrange
+    const user = {
+      firstName: null,
+      lastName: null,
+      email: null
+    };
+
+   component.applyForm.patchValue(user);
+
+   component.submitApplication();
+
+    expect(mockHousingService.submitApplication).toHaveBeenCalledWith(
+      '',
+      '',
+      '',
     );
   });
 
 });
-});
+
+
+
+
