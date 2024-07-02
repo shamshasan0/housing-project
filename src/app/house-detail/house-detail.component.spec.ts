@@ -1,11 +1,10 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
-import { HouseDetailComponent } from './house-detail.component';
 import { HousingService } from '../services/housing.services';
+import { HouseDetailComponent } from './house-detail.component';
 import { HousingModel } from '../models/housing.model';
-import { of } from 'rxjs';
-import routeConfig from '../../routes';
+import { HousingLocationStateModel } from '../house-card/house-card.state';
+import { of } from 'rxjs/internal/observable/of';
 
 describe('HouseDetailComponent', () => {
   let component: HouseDetailComponent;
@@ -40,20 +39,28 @@ describe('HouseDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
-//   it('should fetch housing location on initialization', async () => {
-//     // Arrange
-//     const mockHousingLocation: HousingModel = { id: 1, name: 'Test Housing Location' };
-//     mockHousingService.getHousingLocationById.and.resolveTo(mockHousingLocation);
+  it('should fetch housing location on initialization', async () => {
+    // Arrange
+    const mockHousingLocation: HousingModel = { "id": 5,
+    "name": "Hopeful Apartment Group",
+    "city": "Oakland",
+    "state": "CA",
+    "photo": "/assets/images/r-architecture-JvQ0Q5IkeMM-unsplash.jpg",
+    "availableUnits": 2,
+    "wifi": true,
+    "laundry": true };
 
-//     // Act (constructor is called during component creation)
-//     fixture.detectChanges();
+    mockHousingService.getHousingLocationById.and.returnValue(Promise.resolve(mockHousingLocation));
 
-//     // Assert
-//     expect(component.housingLocation).toEqual(mockHousingLocation);
-//     expect(mockHousingService.getHousingLocationById).toHaveBeenCalledWith(1);
-//   });
+    // Act
+    fixture.detectChanges(); // Trigger data binding
 
-  it('', () => {
+    // Assert
+    fixture.whenStable().then(() => {
+      expect(component.housingLocation).toEqual(mockHousingLocation);
+    });
+
+  it('should call submitApplication on HousingService with form values', () => {
     // Arrange
     const user = {
       firstName: 'John',
@@ -72,4 +79,5 @@ describe('HouseDetailComponent', () => {
     );
   });
 
+});
 });
