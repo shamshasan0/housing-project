@@ -2,7 +2,7 @@
 
 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+[![Node.js CI](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
 
 ## Development server
 
