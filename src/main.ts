@@ -3,16 +3,23 @@ import { bootstrapApplication, provideProtractorTestingSupport } from '@angular/
 import { provideRouter } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app/app.component';
-import { HousingLocationState } from './app/housing-location/housing-location.state';
+import { HousingLocationState } from './app/house-card/house-card.state';
 import routeConfig from './routes';
-import { HousingLocationComponent } from './app/housing-location/housing-location.component';
-import { HomeComponent } from './app/home/home.component';
+import { HouseListComponent } from './app/house-list/house-list.component';
+import { HouseCardComponent } from './app/house-card/house-card.component';
 
-bootstrapApplication(AppComponent,  {
-  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])),provideProtractorTestingSupport(), provideRouter(routeConfig)],
-}).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
+}).catch((err: Error) => console.error(err));
 
-// bootstrapApplication(HomeComponent, {
-//   providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])),provideProtractorTestingSupport(), provideRouter(routeConfig)],
-// }).catch((err) => console.error(err));
+bootstrapApplication(HouseListComponent, {
+  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
+}).catch((err: Error) => console.error(err));
+
+bootstrapApplication(HouseCardComponent, {
+  providers: [importProvidersFrom(NgxsModule.forRoot([HousingLocationState])), provideProtractorTestingSupport(), provideRouter(routeConfig)],
+}).catch((err: Error) => console.error(err));
+
+
+
 

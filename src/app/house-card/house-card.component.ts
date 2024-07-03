@@ -1,17 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { Store } from '@ngxs/store';
 import { HousingModel } from '../models/housing.model';
-import { GetAllHousingLocations } from './housing-location.actions';
-import { HousingLocationState } from './housing-location.state';
 
 @Component({
-  selector: 'app-housing-location',
+  selector: 'app-house-card',
   standalone: true,
-  imports: [HousingLocationComponent, CommonModule, RouterLink, RouterOutlet],
+  imports: [HouseCardComponent, RouterLink, RouterOutlet, CommonModule],
   template: `
   <section class="listing">
+
     <img
       class="listing-photo"
       [src]="housingLocation.photo"
@@ -24,26 +22,10 @@ import { HousingLocationState } from './housing-location.state';
   </section>
   
 `,
-  styleUrl: './housing-location.component.scss'
+  styleUrl: './house-card.component.scss'
 })
-export class HousingLocationComponent {
+export class HouseCardComponent {
   @Input() housingLocation!: HousingModel;
-
-  constructor(private store: Store){
-
-  }
-
-
-  ngOnInit(): void {
-    this.getHouses()
-  }
-
-    housesOb = this.store.select(HousingLocationState.getHouses)
-
-    getHouses(){
-    this.store.dispatch(new GetAllHousingLocations()).subscribe();
-    
-  }
-  }
+}
 
 

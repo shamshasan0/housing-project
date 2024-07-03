@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DetailsComponent } from "./details/details.component";
-import { HomeComponent } from './home/home.component';
-import { GetAllHousingLocations } from './housing-location/housing-location.actions';
-import { NgxsRootModule } from '@ngxs/store/src/modules/ngxs-root.module';
-import { NgxsModule } from '@ngxs/store';
-import { HousingLocationState } from './housing-location/housing-location.state';
+import { HouseDetailComponent } from "./house-detail/house-detail.component";
+import { HouseListComponent } from './house-list/house-list.component';
 
 
 @Component({
@@ -23,13 +19,10 @@ import { HousingLocationState } from './housing-location/housing-location.state'
     </section>
   </main>`,
   styleUrl: './app.component.scss',
-  imports: [RouterModule, HomeComponent, DetailsComponent]
-  
+  imports: [RouterModule, HouseListComponent, HouseDetailComponent, AppComponent ]
+
 })
 export class AppComponent {
 
-  title = 'title';
-
- 
 }
 

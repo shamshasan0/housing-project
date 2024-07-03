@@ -1,5 +1,5 @@
 .results {
-  display: grid;
+  display:grid;
   gap: 48px;
   grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
   margin-top: 48px;
@@ -23,14 +23,14 @@ button {
 }
 @media (min-width: 500px) and (max-width: 768px) {
   .results {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   input[type="text"] {
-      width: 70%;
-  }   
+    width: 70%;
+  }
 }
 @media (max-width: 499px) {
   .results {
-      grid-template-columns: 1fr;
-  }    
+    grid-template-columns: 1fr;
+  }
 }

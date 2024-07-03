@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../services/housing.services';
 import { HousingModel } from '../models/housing.model';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-details',
+  selector: 'app-house-detail',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
@@ -32,10 +32,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     <section class="listing-apply">
       <h2 class="section-heading">Apply now to live here</h2>
       <form [formGroup]="applyForm" (submit)="submitApplication()">
-        <label for="first-name">First Name</label>
-        <input id="first-name" type="text" formControlName="firstName" />
-        <label for="last-name">Last Name</label>
-        <input id="last-name" type="text" formControlName="lastName" />
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" formControlName="firstName" />
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" formControlName="lastName" />
+
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email" />
         <button type="submit" class="primary">Apply now</button>
@@ -43,30 +45,40 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     </section>
   </article>
 `,
-  styleUrl: './details.component.scss'
+  styleUrl: './house-detail.component.scss'
 })
-export class DetailsComponent {
-  route: ActivatedRoute = inject(ActivatedRoute);
-  housingService = inject(HousingService);
+export class HouseDetailComponent {
+  
   housingLocation: HousingModel | undefined;
-  constructor() {
+firstName: any;
+
+
+  constructor( private housingService: HousingService, private route: ActivatedRoute) {
     const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
     this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
       this.housingLocation = housingLocation;
     })
-  }
+
+    }
+  
 
   applyForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
+    firstName: new FormControl('', [ Validators.required, Validators.minLength(4)]),
+    lastName: new FormControl('', [ Validators.required, Validators.minLength(4)]),
+    email: new FormControl('', [Validators.email]),
   });
 
   submitApplication() {
-    this.housingService.submitApplication(
-      this.applyForm.value.firstName ?? '',
-      this.applyForm.value.lastName ?? '',
-      this.applyForm.value.email ?? '',
-    );
+    if ( this.applyForm.invalid )
+      alert('invalid credentials')
+    
+      this.housingService.submitApplication(
+        this.applyForm.value.firstName ?? '',
+        this.applyForm.value.lastName ?? '',
+        this.applyForm.value.email ?? '',
+      );
+    }
+   
+
   }
-}
+
