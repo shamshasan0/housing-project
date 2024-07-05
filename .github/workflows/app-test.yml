@@ -23,7 +23,7 @@ jobs:
     - name: Code Coverage Report
       uses: themichaelhall/check-code-coverage@v2
       with:
-        report: index.html
+        report: coverage/housing2/index.html
         required-percentage: 100
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
