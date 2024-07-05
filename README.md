@@ -1,6 +1,6 @@
 # Housing
 
-
+## runs a script of all test cases; 100% coverage achieved
 [![.github/workflows/app-test.yml](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
 
 ## Development server
