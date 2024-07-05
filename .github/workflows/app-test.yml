@@ -21,8 +21,10 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
     - name: Code Coverage Report
-      uses: romeovs/lcov-reporter-action@v0.4.0
+      uses: shamshasan0/check-code-coverage@v2
       with:
+        report: coverage.xml
+        required-percentage: 100
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
