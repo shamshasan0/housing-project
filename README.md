@@ -1,8 +1,7 @@
 # Housing
 
 
-
-[![test](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
+[![.github/workflows/app-test.yml](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
 
 ## Development server
 
