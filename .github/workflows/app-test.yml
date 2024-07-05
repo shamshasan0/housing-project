@@ -1,5 +1,6 @@
-// this workflow will make sure the app runs correctly, 
-as well as covers and makes sure all test cases pass.
+/** this workflow will:
+// make sure the app runs correctly, 
+// as well as covers and makes sure all test cases pass. **/
 
 
 on:
