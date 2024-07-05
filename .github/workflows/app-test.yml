@@ -33,8 +33,16 @@ jobs:
     - name: Install Chrome dependencies
       run: sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7
 
-    - name: Run tests
-      run: npm run test:ci
+    - name: Run tests and capture coverage
+      run: |
+        npm run test:ci -- --coverage  # Adjust the test command to generate coverage
+
+        # Example: Parse coverage summary and extract percentage
+        COVERAGE_PERCENTAGE=$(grep -o '"lines":{[^}]*' coverage/stslib/coverage-summary.json | awk -F'"pct":' '{s+=$2} END {print s/NR}')
+        echo "Coverage Percentage: $COVERAGE_PERCENTAGE"
+
+        # Store coverage percentage as an environment variable
+        echo "::set-env name=COVERAGE_PERCENTAGE::$COVERAGE_PERCENTAGE"
 
     - name: Update coverage badges
       if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
@@ -42,3 +50,5 @@ jobs:
       with:
         coverage-summary-path: coverage/stslib/coverage-summary.json
         protected-branches: '["master", "develop"]'
+
+    # You can add more steps here that use $COVERAGE_PERCENTAGE if needed
