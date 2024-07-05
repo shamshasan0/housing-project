@@ -1,5 +1,4 @@
- 
-# this workflow will check that the app runs correctly + ensures all test cases pass. 
+ # this workflow will check that the app runs correctly + ensures all test cases pass. 
 
 
 on:
