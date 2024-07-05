@@ -21,7 +21,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
     - name: Code Coverage Report
-      uses: shamshasan0/check-code-coverage@v2
+      uses: themichaelhall/check-code-coverage@v2
       with:
         report: coverage.xml
         required-percentage: 100
