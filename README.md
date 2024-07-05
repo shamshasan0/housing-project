@@ -2,7 +2,7 @@
 
 
 
-[![Node.js CI](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
+[![test](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
 
 ## Development server
 
