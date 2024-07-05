@@ -1,40 +1,38 @@
-
-name: Node.js CI
+name: test
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - '**'
+
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
+      - develop
 
 jobs:
-  build:
+  test:
+
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-    - name: Code Coverage Report
-      uses: themichaelhall/check-code-coverage@v2
+      uses: actions/setup-node@v1
       with:
-        report: coverage/housing2/index.html
-        required-percentage: 100
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+
     - run: npm ci
-    - name: Install Chrome dependencies
-      run: sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7
-    - name: Install Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y wget
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo dpkg -i google-chrome-stable_current_amd64.deb
-        sudo apt-get install -f
-    - run: npm run build --if-present
+    - run: npm run test:ci
+
+    # Coverage badges will be updated on any branch except protected
+    # branches 'develop' and 'master' and on a pull requests
+    - name: Test angular action
+      uses:  demyanets/angular-coverage-badges-action@v1
+      with:
+        coverage-summary-path: coverage/stslib/coverage-summary.json
+        protected-branches: '["master",  "develop"]'
