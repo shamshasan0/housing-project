@@ -1,6 +1,5 @@
  # this workflow will check that the app runs correctly + ensures all test cases pass. 
 
-
 on:
   push:
     branches:
