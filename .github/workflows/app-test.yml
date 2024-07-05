@@ -35,20 +35,10 @@ jobs:
 
     - name: Run tests and capture coverage
       run: |
-        npm run test:ci -- --coverage  # Adjust the test command to generate coverage
+        npm run test:ci -- --coverage 
 
-        # Example: Parse coverage summary and extract percentage
-        COVERAGE_PERCENTAGE=$(grep -o '"lines":{[^}]*' coverage/stslib/coverage-summary.json | awk -F'"pct":' '{s+=$2} END {print s/NR}')
-        echo "Coverage Percentage: $COVERAGE_PERCENTAGE"
-
-        # Store coverage percentage as an environment variable
-        echo "::set-env name=COVERAGE_PERCENTAGE::$COVERAGE_PERCENTAGE"
-
-    - name: Update coverage badges
-      if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
-      uses: demyanets/angular-coverage-badges-action@v1
-      with:
-        coverage-summary-path: coverage/stslib/coverage-summary.json
-        protected-branches: '["master", "develop"]'
+    - name: Code Coverage Summary
+      uses: irongut/CodeCoverageSummary@v1.3.0
+            
 
     # You can add more steps here that use $COVERAGE_PERCENTAGE if needed
