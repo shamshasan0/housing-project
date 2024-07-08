@@ -23,6 +23,10 @@ jobs:
     
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
+
+    - name: Create Coverage Badges
+      uses: jaywcjlove/coverage-badges-cli@v2.0.0
+            
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
