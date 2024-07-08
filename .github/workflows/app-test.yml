@@ -37,7 +37,7 @@ jobs:
     - run: coverage-badges --output coverage/badges.svg
     - run: npm coverage-badges-cli --source coverage/coverage-summary.json
 
- 
+
     - name: Update coverage badges
       if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
       uses: demyanets/angular-coverage-badges-action@v1
