@@ -32,14 +32,16 @@ jobs:
       run: npm ci
     
     - name: Run tests
-      run: npm run test:ci
+      run: npm run test:ci 
+    - run: npm i coverage-badges-cli -g
+    - run: coverage-badges --output coverage/badges.svg
  
-    - name: Create Coverage Badges
-      uses: jaywcjlove/coverage-badges-cli@v2.0.0
-      with: 
-       coverage-summary-path: coverage/stslib/coverage-summary.json
-       badges-directory: ./badges
-       protected-branches: '["master", "develop"]'
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/master'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./coverage
        
     - name: Update coverage badges
       if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
