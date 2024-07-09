@@ -35,7 +35,6 @@ jobs:
         uses: demyanets/angular-coverage-badges-action@v1
         with:
           coverage-summary-path: coverage/stslib/coverage-summary.json
-          badges-directory: ./badges
           protected-branches: '["master", "develop"]'
           
       - name: Upload coverage reports to Codecov
