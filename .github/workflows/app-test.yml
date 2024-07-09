@@ -30,6 +30,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+
+      - name: Test angular action
+        uses:  demyanets/angular-coverage-badges-action@v1
+        with:
+          coverage-summary-path: coverage/stslib/coverage-summary.json
+          protected-branches: '["master",  "develop"]'
+          
       - name: Update coverage badges
         if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
         run: |
@@ -37,3 +44,6 @@ jobs:
           istanbul-badges shield --input coverage/stslib/coverage-summary.json --exclude none > badges/coverage.svg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+    
