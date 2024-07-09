@@ -32,11 +32,11 @@ jobs:
           
       - name: Update coverage badges
         if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
-        run: |
-          npm install -g istanbul-badges
-          istanbul-badges shield --input coverage/coverage-summary.json --exclude none
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: demyanets/angular-coverage-badges-action@v1
+        with:
+          coverage-summary-path: coverage/stslib/coverage-summary.json
+          badges-directory: ./badges
+          protected-branches: '["master", "develop"]'
           
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
