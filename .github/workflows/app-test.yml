@@ -29,7 +29,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-          
+      - name: Install Chrome dependencies
+        run: sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7
+        
       - name: Run ng test
         run: npm test -- --code-coverage
           
@@ -38,7 +40,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
         
-    
-
-
-    
+  
