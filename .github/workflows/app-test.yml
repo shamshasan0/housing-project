@@ -1,10 +1,22 @@
+name: Test and Coverage Badge
 
-  name: test
+on:
+  push:
+    branches:
+      - '**'
+
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x]  # Adjust the Node.js version as per your project's requirements
+        node-version: [20.x]  # Adjust the Node.js version as per your project's requirements
 
     steps:
       - name: Checkout code
@@ -26,4 +38,5 @@
         run: |
           npm install -g istanbul-badges
           istanbul-badges shield --input coverage/stslib/coverage-summary.json --exclude none > badges/coverage.svg
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
