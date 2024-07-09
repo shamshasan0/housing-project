@@ -27,14 +27,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests with Puppeteer
-        run: |
-          npm test -- --headless
-        env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+      - name: Run tests with coverage
+        run: npm test -- --coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/index.html # Adjust the file pattern as necessary to match the coverage report format
+          directory: coverage # Optional, if you need to specify the directory where coverage reports are located
