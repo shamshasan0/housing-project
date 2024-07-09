@@ -34,7 +34,7 @@ jobs:
         if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
         run: |
           npm install -g istanbul-badges
-          istanbul-badges shield --input coverage/coverage-summary.json --exclude none > badges/coverage.svg
+          istanbul-badges shield --input coverage/coverage-summary.json --exclude none
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
