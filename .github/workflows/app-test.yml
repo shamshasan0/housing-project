@@ -34,8 +34,6 @@ jobs:
     - name: Run tests
       run: npm run test:ci 
     - run: npm coverage-badges-cli --source coverage/coverage-summary.json
-    - run: coverage-badges --output coverage/badges.svg
-    
 
 
     - name: Update coverage badges
