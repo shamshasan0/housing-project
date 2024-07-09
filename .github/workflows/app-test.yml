@@ -33,8 +33,6 @@ jobs:
     
     - name: Run tests
       run: npm run test:ci 
-    - run: npm coverage-badges-cli --source coverage/coverage-summary.json
-
 
     - name: Update coverage badges
       if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
