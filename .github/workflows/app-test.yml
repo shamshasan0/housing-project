@@ -31,7 +31,13 @@ jobs:
         run: npm ci
       - name: Install Chrome dependencies
         run: sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7
-        
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+          sudo apt-get install -f
       - name: Run ng test
         run: npm test -- --code-coverage
           
