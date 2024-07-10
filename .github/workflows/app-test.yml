@@ -3,7 +3,7 @@ name: Coverage Badge
 on:
   push:
     branches:
-      - coverage-workflow  # Trigger workflow on push to coverage workflow branch
+      - master  # Trigger workflow on push to main branch
   pull_request:
     branches:
       - master  # Trigger workflow on pull requests targeting main branch
@@ -33,7 +33,7 @@ jobs:
     - name: Generate coverage badge
       run: |
         # Extract coverage percentage from the text-summary report
-        COVERAGE=$(grep -oP 'All files\s+\K[0-9]+(?=%)' coverage/coverage-summary.json)
+        COVERAGE=$(grep -oP 'All files\s+\K[0-9]+(?=%)' coverage/coverage-summary.txt)
         if [ -z "$COVERAGE" ]; then
           COVERAGE=0
         fi
