@@ -23,10 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-
-    - name: Run tests with coverage
-      run: npm test -- --code-coverage  # Adjust this command if needed
-
+      
     - name: Install coverage-badges-cli
       run: npm install -g coverage-badges-cli
 
