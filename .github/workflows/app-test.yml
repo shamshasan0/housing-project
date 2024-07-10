@@ -30,7 +30,7 @@ jobs:
     - name: Generate coverage badge
       run: |
         # Extract coverage percentage from the text-summary report
-        COVERAGE=$(grep -oP 'All files\s+\K[0-9]+(?=%)' coverage/coverage-summary.txt)
+        COVERAGE=$(grep -oP 'All files\s+\K[0-9]+(?=%)' coverage/index.html)
         if [ -z "$COVERAGE" ]; then
           COVERAGE=0
         fi
