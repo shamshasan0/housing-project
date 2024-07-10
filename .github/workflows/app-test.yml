@@ -3,10 +3,10 @@ name: Coverage Badge
 on:
   push:
     branches:
-      - main  # Trigger workflow on push to main branch
+      - coverage-workflow  # Trigger workflow on push to coverage workflow branch
   pull_request:
     branches:
-      - main  # Trigger workflow on pull requests targeting main branch
+      - master  # Trigger workflow on pull requests targeting main branch
 
 jobs:
   coverage:
