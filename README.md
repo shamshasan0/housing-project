@@ -1,6 +1,6 @@
 # Housing
 
-[![Test and Coverage Badge](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
+[![Test & Coverage Badge](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml/badge.svg)](https://github.com/shamshasan0/housing/actions/workflows/app-test.yml)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
