@@ -1,46 +1,48 @@
-name: Coverage Badge
+name: Test and Coverage Badge
 
 on:
   push:
     branches:
-      - master  # Trigger workflow on push to main branch
+      - '**'
+
   pull_request:
     branches:
-      - master  # Trigger workflow on pull requests targeting main branch
+      - master
+      - develop
 
 jobs:
-  coverage:
+  test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [20.x]  # Adjust the Node.js version as per your project's requirements
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'  # Specify the Node.js version you want to use
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: npm install
-      
-    - name: Install coverage-badges-cli
-      run: npm install -g coverage-badges-cli
+      - name: Install dependencies
+        run: npm ci
+          
+      - name: Update coverage badges
+        if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
+        uses: demyanets/angular-coverage-badges-action@v1
+        with:
+          coverage-summary-path: coverage/stslib/coverage-summary.json
+          protected-branches: '["master", "develop"]'
+          
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+        
+    
 
-    - name: Generate coverage badge
-      run: |
-        # Extract coverage percentage from the text-summary report
-        COVERAGE=$(grep -oP 'All files\s+\K[0-9]+(?=%)' coverage/index.html)
-        if [ -z "$COVERAGE" ]; then
-          COVERAGE=0
-        fi
-        # Generate badge
-        coverage-badges --coverage $COVERAGE --color green --label "Coverage" > coverage-badge.svg
 
-    - name: Commit and push badge
-      uses: EndBug/add-and-commit@v9
-      with:
-        author_name: "GitHub Actions"
-        author_email: "actions@github.com"
-        message: "Update coverage badge"
-        add: "coverage-badge.svg"
+    
