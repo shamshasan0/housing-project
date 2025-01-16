@@ -41,22 +41,19 @@ describe('HouseDetailComponent', () => {
 
     fixture = TestBed.createComponent(HouseDetailComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); // Trigger initial data binding
+    fixture.detectChanges(); 
   });
 
   it('should fetch housing location on initialization', async () => {
-    // Arrange
     
-    // Act
-    fixture.detectChanges(); // Trigger data binding
+    fixture.detectChanges(); 
 
-    // Assert
     await fixture.whenStable();
 
     expect(component.housingLocation).toEqual(mockHousingLocation);
   });
   it('should invoke submitApplication from housingService with filled out user info', () => {
-    // Arrange
+
     const user = {
       firstName: 'John',
       lastName: 'Doe',
@@ -75,7 +72,6 @@ describe('HouseDetailComponent', () => {
   });
 
   it('should invoke submitApplication from housingService with filled out user info', () => {
-    // Arrange
     const user = {
       firstName: null,
       lastName: null,
